@@ -37,13 +37,12 @@ public class Weapon : MonoBehaviour
 
     private void StartCoroutine(IEnumerable enumerable)
     {
-        
+        //Nothing is in here :)
     }
 
     private IEnumerable DestroyBulletAfterTime(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(bullet)
-            ;
+        Destroy(bullet);
     }
 }
