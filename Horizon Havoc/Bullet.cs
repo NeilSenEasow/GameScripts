@@ -8,9 +8,9 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // General collision debug message
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
+        //Debug.Log("Collision detected with: " + collision.gameObject.name);
 
-        if (collision.collider.name == "Target")
+        if (collision.collider.tag == "Target")
         {
             Debug.Log("Hit an obstacle!!");
             Destroy(gameObject);
