@@ -3,11 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Camera playerCamera;
+    //this camera was removed from scene since it wont work with prefabs
+    //public Camera playerCamera;
 
     //Shooting
     public bool isShooting, readyToShoot;
@@ -105,7 +107,7 @@ public class Weapon : MonoBehaviour
     private Vector3 CalculateDirectionAndSpeed()
     {
         //Shooting from middle of screen to check where we are pointing
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f,0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f,0));
         RaycastHit hit;
 
         Vector3 targetPoint;
