@@ -29,6 +29,10 @@ public class Weapon : MonoBehaviour
     public float bulletVelocity = 30f;
     public float bulletPrefabLifeTime = 3f;
 
+    //Muzzle
+    public GameObject muzzleEffect;
+    private Animator animator;
+
     public enum ShootingMode
     {
         Single,
@@ -42,6 +46,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -66,6 +71,13 @@ public class Weapon : MonoBehaviour
 
     private void FireWeapon()
     {
+        //MuzzleFireEffect
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+        animator.SetTrigger("RECOIL");
+
+        //Temporary Pistol Sound
+        SoundManager.Instance.shootingSoundPistol.Play();
+
         readyToShoot = false; //to prevent bullet from shooting twice
 
         Vector3 shootingDirection = CalculateDirectionAndSpeed().normalized;
