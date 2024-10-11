@@ -10,7 +10,7 @@ public class MouseMovement : MonoBehaviour
     float xRotation = 0f;
     float yRotation = 0f;
 
-    public Camera camera; 
+    public new Camera camera; 
 
     // Start is called before the first frame update
     void Start()
