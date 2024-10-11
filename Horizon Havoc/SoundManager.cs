@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; set; }
-
+    public static SoundManager Instance { get; private set; }
+    //public AudioSource shootingSoundPistol;
     public AudioSource shootingSoundPistol;
-
-    //Working on bulletHittingAudio
-    //public GameObject bulletImpactEffectPrefab;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance == null)
         {
-            Destroy(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep this alive between scenes if needed
         }
         else
         {
-            Instance = this;
+            Destroy(gameObject); // Ensure only one instance of SoundManager exists
         }
     }
 }

@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     //public Camera playerCamera;
 
     //Shooting
-    public bool isShooting, readyToShoot;
+    public bool isShooting, readyToShoot = true;
     public bool allowReset = true;
     public float shootingDelay = 2f;
 
@@ -75,8 +75,19 @@ public class Weapon : MonoBehaviour
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("RECOIL");
 
+
+        //This is a test line
         //Temporary Pistol Sound
-        SoundManager.Instance.shootingSoundPistol.Play();
+        //SoundManager.Instance.shootingSoundPistol.Play();
+
+        if (SoundManager.Instance != null && SoundManager.Instance.shootingSoundPistol != null)
+        {
+            SoundManager.Instance.shootingSoundPistol.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Shooting sound not assigned or SoundManager is null!");
+        }
 
         readyToShoot = false; //to prevent bullet from shooting twice
 
